@@ -1,0 +1,258 @@
+#Ageloading {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: #fff;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    opacity: 0.95;
+	z-index: 1010;
+}
+
+.Agewindow {
+	background: rgba(255, 255, 255, .39);
+	padding: 13px;
+	border-radius: 5px;
+	position: fixed;
+	left: 50%;
+	margin-left: -240px;
+	top: 20%;
+	width: 454px;
+	z-index: 1011;
+}
+
+.Agewindow .Agecolor_bg {
+	padding: 13px;
+	border-radius: 5px;
+}
+
+.Agewindow .Agemain {
+	background: #fff0;
+	border-radius: 5px;
+	padding: 20px 10px;
+}
+
+.Agewindow .Agetitle {
+	font-family: Cambria;
+	font-size: 40px;
+	line-height: 44px;
+	text-align: center;
+	color: #010101;
+	margin-bottom: 30px;
+}
+
+.Agewindow .Agechoice {
+	text-align: center;
+}
+
+.Agewindow .Agesubmit {
+	min-width: 30px;
+	height: 40px;
+	font-family: Cambria;
+	font-size: 28px;
+	line-height: 28px;
+	color: #fff;
+	cursor: pointer;
+	cursor: hand;
+	border-radius: 5px;
+	padding: 0 10px 2px 10px;
+	margin: 0 6px;
+	outline: none;
+}
+
+
+	.Agewindow {
+    width: 90vw;
+    left: 5vw;
+    margin: 0;
+    height: 90vh;
+    top: 5vh;
+    background: none;
+    box-shadow: none;
+    overflow: auto;
+}
+
+.Agetitle h3 {
+    font-family: 'Acrom';
+    text-transform: uppercase;
+    font-size: 35px;
+}
+
+.Agetitle p {
+    font-family: 'Acrom';
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.Agewindow .Agecolor_bg {
+    background: #fff0;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.Agewindow .Agesubmit {
+    color: #ffffff;
+    background: #000000;
+    border: 0;
+    padding: 0 24px;
+}
+
+.Agewindow .Agesubmit:hover {
+    background: #787878;
+}
+
+
+span.ageyespan, span.agenospan { 
+    display: none; 
+}
+
+@media screen and (max-width: 960px) { 
+
+.Agewindow .Agechoice {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.Agewindow .Agesubmit {
+    height: 100%;
+    padding: 6px 24px;
+    white-space: break-spaces;
+}
+.Agewindow .Agechoice > .Agesubmit, .Agechoice a { 
+    width: 48%; 
+}
+.Agechoice a .Agesubmit {
+    width: 100%;
+}
+}
+@media screen and (max-width: 760px) { 
+
+.Agetitle img {
+    display: none;
+}
+
+.Agetitle:before {
+    content: '';
+    background: url(../../../../../../img/mob/18.svg);
+    display: block;
+    margin: auto;
+    width: 75px;
+    height: 61px;
+    background-repeat: no-repeat;
+}
+
+div#Ageloading {
+    background: #000000f7;
+}
+
+.Agetitle h3 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 23px 0 0px;
+}
+
+.Agetitle p {
+    color: #787878;
+    position: absolute;
+    top: calc(100% + 115px);
+}
+
+.Agewindow {
+    width: 100vw;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.Agewindow .Agecolor_bg {
+    padding: 13px 0;
+}
+
+.Agewindow .Agetitle {
+    position: relative;
+    margin-top: 32px;
+    margin-bottom: 26px;
+}
+
+.Agewindow .Agechoice > .Agesubmit {
+    border: 1px solid #fff;
+    border-radius: 17px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    width: 48%;
+    margin: 0;
+    display: inline-block;
+    height: 84px;
+    white-space: break-spaces;
+    font-size: 15px;
+    line-height: 1.3;
+}
+.Agechoice a .Agesubmit {
+    border: 1px solid #fff;
+    border-radius: 17px;
+    width: 100%;
+    margin: 0;
+    display: inline-block;
+    height: 100%;
+    white-space: break-spaces;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.Agewindow .Agechoice  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 5px;
+}
+
+.Agechoice a {
+     width: 48%;
+}
+span.ageyespan, span.agenospan {
+    position: absolute;
+    display: block;
+    width: 100px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    top: 11px;
+}
+span.ageyespan {
+    left: calc(24% - 50px); 
+}
+span.agenospan {
+    left: calc(50% - 50px);
+    
+}
+.Agechoice, .Agechoice a {
+    position: relative;
+}
+
+.Agewindow .Agesubmit {
+    padding: 31px 0;
+}
+span.vnospan, span.vyspan {
+position: absolute;
+    display: block;
+    width: 100px;
+    color: #fff;
+    font-size: 14px;
+    bottom: 14px;
+}
+
+span.vnospan {
+    left: calc(50% - 50px);}
+
+span.vyspan {
+    left: calc(24% - 50px); }
+}
