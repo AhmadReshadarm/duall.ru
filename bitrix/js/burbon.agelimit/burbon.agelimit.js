@@ -16,7 +16,6 @@ function AgeUserSuccess(URL) {
       $(".burbon_age_preload").css("display", "none");
     },
   });
-  // $(".burbon_age_preload").css("display", "none");
   return false;
 }
 BX.ready(function () {
