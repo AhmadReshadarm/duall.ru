@@ -7,16 +7,16 @@ function AgeEndWork() {
   return false;
 }
 function AgeUserSuccess(URL) {
-  // $.ajax({
-  //   url: URL,
-  //   type: "POST",
-  //   dataType: "html",
-  //   data: "AgeSuccess=Y",
-  //   success: function (response) {
-  //     $(".burbon_age_preload").css("display", "none");
-  //   },
-  // });
-  $(".burbon_age_preload").css("display", "none");
+  $.ajax({
+    url: URL,
+    type: "POST",
+    dataType: "html",
+    data: "AgeSuccess=Y",
+    success: function (response) {
+      $(".burbon_age_preload").css("display", "none");
+    },
+  });
+  // $(".burbon_age_preload").css("display", "none");
   return false;
 }
 BX.ready(function () {
