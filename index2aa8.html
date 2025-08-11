@@ -27,6 +27,22 @@
 <link href="style.css" rel="stylesheet">
 <link href="stylew.css" rel="stylesheet">
   <link rel="shortcut icon" href="/img/favicon.ico" />
+  <style>
+/* CSS for the success and error messages */
+#resultContainer {
+    text-align: center;
+}
+.success-message {
+    color: #288b00; /* Green color for success */
+    font-size: 20px;
+    font-weight: bold;
+}
+.error-message {
+    color: #bc262c; /* Red color for error */
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
 </head>
 
 <body>
@@ -86,9 +102,9 @@
       
   <div class="content-container">
     <div id="resultContainer" style="margin-top: 20px; display: none;">
-        <h2>Результат проверки</h2>
-        <div id="validationResult"></div> 
-    </div>
+    <h2>Результат проверки</h2>
+    <div id="validationResult"></div>
+</div>
   <div class="content-oriinal">
   
             <h1>Проверка на оригинальность  <br>продукции DUALL</h1>
@@ -510,7 +526,7 @@ $('.linkcode-clock').removeClass('active');
 }); 
 </script> 
 
-<script>
+<!-- <script>
 $(document).ready(function() { 
     $('#originalityForm').submit(function(e) {
         e.preventDefault();
@@ -541,7 +557,7 @@ $(document).ready(function() {
         });
     });
 });
-</script>
+</script> -->
  
   
 
@@ -771,7 +787,7 @@ $('#map_dis_alert_box .noregion .namecity').html(title);
 <div id="AgeContentBye" style="display:none">
 	<center><h1>До свидания!</h1></center>
 </div>
-<script>
+<!-- <script>
     // Get the full URL from the browser's address bar
     const urlParams = new URLSearchParams(window.location.search);
     
@@ -782,5 +798,70 @@ $('#map_dis_alert_box .noregion .namecity').html(title);
     if (qrCode) {
         document.getElementById('uniqueCode').value = qrCode;
     }
+</script> -->
+
+<script>
+$(document).ready(function() {
+    // Get the code from the URL, if it exists
+    const urlParams = new URLSearchParams(window.location.search);
+    const qrCode = urlParams.get('code');
+
+    // If a code is present, populate the uniqueCode input field
+    if (qrCode) {
+        $('#uniqueCode').val(qrCode);
+    }
+    
+    // Listen for the form submission event
+    $('#originalityForm').submit(function(e) {
+        // PREVENT the default form submission and page reload
+        // This is the CRUCIAL line that stops the browser from leaving the page.
+        e.preventDefault();
+        
+        // Show the loader and hide any previous results
+        $('.linkcode-loader').show();
+        $('#resultContainer').hide();
+
+        // Perform the AJAX POST request using the form data
+        // This is the asynchronous request that replaces the normal form submission.
+        $.ajax({
+            url: '/validate-qr/oriv.php',
+            type: 'POST',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function(response) {
+                // Hide the loader once the response is received
+                $('.linkcode-loader').hide();
+                
+                // Hide the form and show the results container
+                $('#originalityForm').hide();
+                $('#resultContainer').show();
+
+                // Check the specific success message from the server response
+                if (response.message === "code is genuine") {
+                    $('#validationResult').html('<div class="success-message">КОД ПОДТВЕРЖДЕН<br>Вы приобрели оригинальную продукцию DUALL!</div>');
+                } else {
+                    // Handle unexpected success messages as a general error
+                    $('#validationResult').html('<div class="error-message">Произошла ошибка при проверке.</div>');
+                }
+            },
+            error: function(xhr, status, error) {
+                // Hide the loader on error
+                $('.linkcode-loader').hide();
+                
+                // Hide the form and show the results container
+                $('#originalityForm').hide();
+                $('#resultContainer').show();
+
+                // Check for a 404 (Not Found) or 403 (Forbidden) status code
+                if (xhr.status === 404 || xhr.status === 403) {
+                    $('#validationResult').html('<div class="error-message">КОД НЕ СХОДИТСЯ<br>Вы приобрели неоригинальную продукцию DUALL, свяжитесь с нами и мы примем меры!</div>');
+                } else {
+                    // Handle other connection errors
+                    $('#validationResult').html('<div class="error-message">Ошибка соединения. Пожалуйста, попробуйте еще раз.</div>');
+                }
+            }
+        });
+    });
+});
 </script>
 <script type="text/javascript" src="../bitrix/js/burbon.agelimit/ageController.js"></script>
